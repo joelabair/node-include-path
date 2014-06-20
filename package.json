@@ -1,6 +1,6 @@
 {
   "name": "include-path",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "Inject additional paths to modules.require global search path.",
   "main": "index.js",
   "scripts": {
