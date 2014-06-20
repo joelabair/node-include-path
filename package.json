@@ -1,0 +1,27 @@
+{
+  "name": "includePath",
+  "version": "0.4.0",
+  "description": "Inject additional paths to modules.require global search path.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joelabair/node-include-path.git"
+  },
+  "keywords": [
+    "require",
+    "path",
+    "module"
+  ],
+  "author": "Joel A. Bair <joel.a.bair@gmail.com>",
+  "license": "GLPv3",
+  "bugs": {
+    "url": "https://github.com/joelabair/node-include-path/issues"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "mocha": "~1.20.1"
+  }
+}
