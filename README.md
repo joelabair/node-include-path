@@ -29,3 +29,5 @@ var myLocalModuleFromLibDirectory = require('myLocalModuleFromLibDirectory');
 
 
 ```
+
+All tests pase with node -v v0.10.28
