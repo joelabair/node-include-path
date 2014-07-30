@@ -18,12 +18,26 @@ describe('Node Inculde Path: ', function(){
 		expect(includePath).not.to.throw(Error);
 	});
 
-	it('can add a path without exception', function(){
+	it('can add paths without exception', function(){
 		includePath(path.join(__dirname, 'lib_a'));
 		includePath(['./test/lib_b']);
 
 		var searchPaths = require('module').Module.globalPaths;
 
+		expect(searchPaths).to.contain(path.join(__dirname, 'lib_a'));
+		expect(searchPaths).to.contain('./test/lib_b');
+	});
+
+	it('can add existing paths without exception and without growing', function(){
+		var searchPathsPre = JSON.stringify(require('module').Module.globalPaths);
+
+		includePath(path.join(__dirname, 'lib_a'));
+		includePath(['./test/lib_b']);
+
+		var searchPaths = require('module').Module.globalPaths;
+		var searchPathsPost =JSON.stringify(searchPaths);
+
+		expect(searchPathsPre).to.equal(searchPathsPost);
 		expect(searchPaths).to.contain(path.join(__dirname, 'lib_a'));
 		expect(searchPaths).to.contain('./test/lib_b');
 	});
