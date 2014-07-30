@@ -13,12 +13,16 @@ var path = require('path');
 
 module.exports = function(addPaths) {
 	if (addPaths) {
-
-		addPaths = Array(addPaths);
+		addPaths = Array.prototype.concat(addPaths);
 		if (addPaths.length) {
-
+			var searchPaths = require('module').Module.globalPaths;
 			var nodeEnvPaths =  (process.env['NODE_PATH']) ? process.env['NODE_PATH'].split(path.delimiter) : [];
-			Array.prototype.push.apply(nodeEnvPaths, addPaths);
+
+			addPaths.forEach(function(path) {
+				if (!~searchPaths.indexOf(path) && !~nodeEnvPaths.indexOf(path)) {
+					nodeEnvPaths.push(path);
+				}
+			});
 
 			process.env['NODE_PATH'] = nodeEnvPaths.join(path.delimiter);
 			require('module').Module._initPaths();

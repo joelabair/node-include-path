@@ -21,6 +21,11 @@ describe('Node Inculde Path: ', function(){
 	it('can add a path without exception', function(){
 		includePath(path.join(__dirname, 'lib_a'));
 		includePath(['./test/lib_b']);
+
+		var searchPaths = require('module').Module.globalPaths;
+
+		expect(searchPaths).to.contain(path.join(__dirname, 'lib_a'));
+		expect(searchPaths).to.contain('./test/lib_b');
 	});
 
 	it('can require local modules without exception', function(){
